@@ -10,7 +10,7 @@ public class TestPeople {
     @Test
     public void testAdd() {
         // given
-        People people = new People();
+        People people = Instructors.getInstance();
         Person personToBeAdded = new Person(0L, "");
         Boolean personHasBeenAdded = people.contains(personToBeAdded);
         Assert.assertFalse(personHasBeenAdded);
@@ -26,7 +26,7 @@ public class TestPeople {
     @Test
     public void testRemove() {
         // given
-        People people = new People();
+        People people = Students.getInstance();
         Person personToBeRemoved = new Person(0L, "");
         people.add(personToBeRemoved);
         Boolean personHasBeenAdded = people.contains(personToBeRemoved);
@@ -44,7 +44,7 @@ public class TestPeople {
     @Test
     public void testFindById() {
         // given
-        People people = new People();
+        People people = Instructors.getInstance();
         Long id = 1000L;
         Person expectedPerson = new Person(id, "");
         people.add(expectedPerson);

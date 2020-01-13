@@ -33,4 +33,23 @@ public class TestInstructor {
         // then
         Assert.assertEquals(expectedNumberOfHoursLearned, actualNumberOfHoursLearned, 0);
     }
+
+    @Test
+    public void testLecture() {
+        Teacher instructor = new Instructor(0L, "");
+        Student[] students = Students.getInstance().toArray();
+        Double numberOfHoursToTeach = 3.0;
+
+        // when
+        instructor.lecture(students, numberOfHoursToTeach);
+
+        for (int i = 0; i < students.length; i++) {
+            Student student = students[i];
+            Double expectedNumberOfHoursLearned = student.getTotalStudyTime() + numberOfHoursToTeach;
+            Double actualNumberOfHoursLearned = student.getTotalStudyTime();
+
+            // then
+            Assert.assertEquals(expectedNumberOfHoursLearned, actualNumberOfHoursLearned, 0);
+        }
+    }
 }

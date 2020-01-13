@@ -7,23 +7,26 @@ import java.util.List;
 /**
  * Created by leon on 1/13/2020.
  */
-public class People implements Iterable<Person> {
-    private List<Person> personList;
+abstract public class People
+        <SomePersonType extends Person>
+        implements Iterable<SomePersonType> {
+
+    protected List<SomePersonType> personList;
 
     public People() {
         this.personList = new ArrayList<>();
     }
 
-    public People(List<Person> personList) {
+    public People(List<SomePersonType> personList) {
         this.personList = personList;
     }
 
-    public void add(Person person) {
+    public void add(SomePersonType person) {
         this.personList.add(person);
     }
 
-    public Person findById(Long id) {
-        for(Person person : this.personList) {
+    public SomePersonType findById(Long id) {
+        for(SomePersonType person : this.personList) {
             if(person.getId().equals(id)) {
                 return person;
             }
@@ -37,16 +40,16 @@ public class People implements Iterable<Person> {
 //                .get();
     }
 
-    public Boolean contains(Person person) {
+    public Boolean contains(SomePersonType person) {
         return this.personList.contains(person);
     }
 
-    public void remove(Person person) {
+    public void remove(SomePersonType person) {
         this.personList.remove(person);
     }
 
     public void remove(Long id) {
-        Person personWithId = this.findById(id);
+        SomePersonType personWithId = this.findById(id);
         this.remove(personWithId);
     }
 
@@ -58,12 +61,10 @@ public class People implements Iterable<Person> {
         return personList.size();
     }
 
-    public Person[] toArray() {
-        return personList.toArray(new Person[0]);
-    }
+    abstract public SomePersonType[] toArray();
 
     @Override
-    public Iterator<Person> iterator() {
+    public Iterator<SomePersonType> iterator() {
         return personList.iterator();
     }
 }
