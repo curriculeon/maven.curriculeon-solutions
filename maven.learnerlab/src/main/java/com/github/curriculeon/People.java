@@ -11,7 +11,7 @@ public class People implements Iterable<Person> {
     private List<Person> personList;
 
     public People() {
-        this(new ArrayList<>());
+        this.personList = new ArrayList<>();
     }
 
     public People(List<Person> personList) {

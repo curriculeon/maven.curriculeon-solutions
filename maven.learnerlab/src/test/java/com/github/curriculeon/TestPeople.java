@@ -47,6 +47,7 @@ public class TestPeople {
         People people = new People();
         Long id = 1000L;
         Person expectedPerson = new Person(id, "");
+        people.add(expectedPerson);
 
         // when
         Person actualPerson = people.findById(id);
