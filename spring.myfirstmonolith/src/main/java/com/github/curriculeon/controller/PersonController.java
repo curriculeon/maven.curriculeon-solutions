@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RequestMapping(value = "/person-controller")
 @RestController
 public class PersonController {
@@ -26,7 +27,6 @@ public class PersonController {
         return responseEntity;
     }
 
-
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<Person> create(@RequestBody Person person) {
         Person responseBody = service.create(person);
@@ -43,7 +43,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person) {
+    public ResponseEntity<Person> update(@PathVariable Long id, @RequestParam Person person) {
         Person responseBody = service.update(id, person);
         ResponseEntity responseEntity = new ResponseEntity<>(responseBody, HttpStatus.OK);
         return responseEntity;
