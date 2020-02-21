@@ -1,0 +1,5 @@
+CREATE TABLE student(
+    email VARCHAR(50) PRIMARY KEY NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL
+);
